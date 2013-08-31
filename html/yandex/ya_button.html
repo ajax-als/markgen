@@ -1,0 +1,77 @@
+{% extends "yandex/ya_template.html" %}
+{% import 'form.html' as form %}
+
+{% block title %}Ya.Islands Button {% endblock %}
+
+{% block doc_ref %}
+http://help.yandex.com/webmaster/?id=1127989
+{% endblock %}
+
+{% block examples %}
+<u>Ex1</u>: buy action&nbsp;(
+<a href="/ya_actions?ya_action_type=button&amp;button_type=BuyAction&amp;url=http%3A%2F%2Fexample.com%2Fgoods%2F124123%23buy&amp;format=ogp#response"> OGP</a>,&nbsp;
+<a href="/ya_actions?ya_action_type=button&amp;button_type=BuyAction&amp;url=http%3A%2F%2Fexample.com%2Fgoods%2F124123%23buy&amp;format=schema.org#response">Schema.org</a>)<br>
+
+<u>Ex2</u>: ask accreditation&nbsp;(
+<a href="/ya_actions?ya_action_type=button&amp;button_type=AskAction&amp;url=http%3A%2F%2Fwww.example.com%2Fask_accreditation&amp;format=ogp#response"> OGP</a>,&nbsp;
+<a href="/ya_actions?ya_action_type=button&amp;button_type=AskAction&amp;url=http%3A%2F%2Fwww.example.com%2Fask_accreditation&amp;format=schema.org#response">Schema.org</a>)<br>
+
+<u>Ex3</u>: check in for a flight&nbsp;(
+<a href="/ya_actions?ya_action_type=button&amp;button_type=CheckInAction&amp;url=http%3A%2F%2Fwww.example.com%2Fcheck_in&amp;format=ogp#response"> OGP</a>,&nbsp;
+<a href="/ya_actions?ya_action_type=button&amp;button_type=CheckInAction&amp;url=http%3A%2F%2Fwww.example.com%2Fcheck_in&amp;format=schema.org#response">Schema.org</a>)<br>
+
+<u>Ex4</u>: send email&nbsp;(
+<a href="/ya_actions?ya_action_type=button&amp;button_type=CommunicateAction&amp;url=http%3A%2F%2Fwww.example.com%2Fsend_email&amp;format=ogp#response"> OGP</a>,&nbsp;
+<a href="/ya_actions?ya_action_type=button&amp;button_type=CommunicateAction&amp;url=http%3A%2F%2Fwww.example.com%2Fsend_email&amp;format=schema.org#response">Schema.org</a>)
+{% endblock %}
+
+{% block ya_action_form %}
+  <!--No chioce of object, instrumen for now -->
+    <input type="hidden" name="ya_action_type" value="button">
+    <label for="type_select">Button Type </label>
+        <select id="type_select" name="button_type" class="long_select">
+          <option value="ApplyAction" {{ ApplyAction }}>ApplyAction</option>
+          <option value="AskAction" {{ AskAction }}>AskAction</option>
+          <option value="BuyAction" {{ BuyAction }}>BuyAction</option>        
+          <option value="CalculateAction" {{ CalculateAction }}> CalculateAction</option>
+          <option value="CheckAction" {{ CheckAction }}>CheckAction</option>
+          <option value="CheckInAction" {{ CheckInAction }}>CheckInAction</option>
+          <option value="CommunicateAction" {{ CommunicateAction }}>CommunicateAction</option>
+          <option value="DownloadAction" {{ DownloadAction }}>DownloadAction</option>
+          <option value="FollowAction" {{ FollowAction }}>FollowAction</option>
+          <option value="InstallAction" {{ InstallAction }}>InstallAction</option>
+          <option value="ListenAction" {{ ListenAction }}> ListenAction</option>
+          <option value="OrderAction" {{ OrderAction }}>OrderAction</option>
+          <option value="PayAction" {{ PayAction }}>PayAction</option>
+          <option value="PlayAction" {{ PlayAction }}>PlayAction</option>
+          <option value="ReadAction" {{ ReadAction }}>ReadAction</option>
+          <option value="RegisterAction" {{ RegisterAction }}>RegisterAction</option>
+          <option value="RentAction" {{ RentAction }}>RentAction</option>
+          <option value="ReserveAction" {{ ReserveAction }}>ReserveAction</option>
+          <option value="ReviewAction" {{ ReviewAction }}>ReviewAction</option>
+          <option value="ScheduleAction" {{ ScheduleAction }}>ScheduleAction</option>
+          <option value="SearchAction" {{ SearchAction }}>SearchAction</option>
+          <option value="SubscribeAction" {{ SubscribeAction }}>SubscribeAction</option>
+          <option value="TrackAction" {{ TrackAction }}>TrackAction</option>
+          <option value="ViewAction" {{ ViewAction }}>ViewAction</option>
+          <option value="WatchAction" {{ WatchAction }}>WatchAction</option>
+        </select>
+    <br>
+    <label>The address of the page (required)
+    <input class="long_input" type="url" name="url" placeholder="E.g.,'http://example.com/goods/124123#buy'" value="{{ url }}" required></label>
+    <br>
+    <label><input type="radio" name="format" value="ogp" {{ ogp_checked }}> OGP (extension)</label>
+    <label><input type="radio" name="format" value="schema.org" {{ schema_checked }}> Schema.org (JSON-LD)</label>
+    <br>
+    <br>
+    {{ form.submit() }}   
+{% endblock %}
+
+
+
+
+
+
+
+
+

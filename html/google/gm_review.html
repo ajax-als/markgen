@@ -1,0 +1,101 @@
+{% extends "google/gm_template.html" %}
+{% import 'form.html' as form %}
+{% block title %}GMail Review Action{% endblock %}
+
+{% block doc_ref %}
+https://developers.google.com/gmail/schemas/reference/review-action
+{% endblock %}
+
+{% block examples %}
+<u>Ex1</u>: review restaurant (rating)&nbsp;(
+<a href="/gm_actions?gm_action_type=review&amp;description=We+hope+you+enjoyed+your+meal+at+Joe%27s+Diner.+Please+rate+your+experience.&amp;item=FoodEstablishment&amp;item_name=Joe%27s+Diner&amp;method=post&amp;url=http%3A%2F%2Freviews.com%2Freview%3Fid%3D123&amp;rating_asked=True&amp;rating_required=rating_req&amp;worst=1&amp;best=5&amp;comment_required=comment_req&amp;format=jsonld#response"> JSON-LD</a>,&nbsp;
+<a href="/gm_actions?gm_action_type=review&amp;description=We+hope+you+enjoyed+your+meal+at+Joe%27s+Diner.+Please+rate+your+experience.&amp;item=FoodEstablishment&amp;item_name=Joe%27s+Diner&amp;method=post&amp;url=http%3A%2F%2Freviews.com%2Freview%3Fid%3D123&amp;rating_asked=True&amp;rating_required=rating_req&amp;worst=1&amp;best=5&amp;comment_required=comment_req&amp;format=microdata#response">Microdata</a>)<br>
+
+<u>Ex2</u>: review restaurant (rating, text)&nbsp;(
+<a href="/gm_actions?gm_action_type=review&amp;description=We+hope+you+enjoyed+your+meal+at+Joe%27s+Diner.+Please+tell+us+about+it.&amp;item=FoodEstablishment&amp;item_name=Joe%27s+Diner&amp;method=post&amp;url=http%3A%2F%2Freviews.com%2Freview%3Fid%3D123&amp;rating_asked=True&amp;rating_required=rating_req&amp;worst=1&amp;best=5&amp;comment_asked=True&amp;comment_required=comment_opt&amp;format=jsonld#response"> JSON-LD</a>,&nbsp;
+<a href="/gm_actions?gm_action_type=review&amp;description=We+hope+you+enjoyed+your+meal+at+Joe%27s+Diner.+Please+tell+us+about+it.&amp;item=FoodEstablishment&amp;item_name=Joe%27s+Diner&amp;method=post&amp;url=http%3A%2F%2Freviews.com%2Freview%3Fid%3D123&amp;rating_asked=True&amp;rating_required=rating_req&amp;worst=1&amp;best=5&amp;comment_asked=True&amp;comment_required=comment_opt&amp;format=microdata#response">Microdata</a>)<br>
+
+<u>Ex3</u>: review movie (rating)&nbsp;(
+<a href="/gm_actions?gm_action_type=review&amp;description=We+hope+you+enjoyed+watching+the+movie.+Please+rate+your+experience.&amp;item=Movie&amp;item_name=Oblivion&amp;method=post&amp;url=http%3A%2F%2Freviews.com%2Freview%3Fid%3D123&amp;rating_asked=True&amp;rating_required=rating_req&amp;worst=1&amp;best=5&amp;comment_required=comment_opt&amp;format=jsonld#response"> JSON-LD</a>,&nbsp;
+<a href="/gm_actions?gm_action_type=review&amp;description=We+hope+you+enjoyed+watching+the+movie.+Please+rate+your+experience.&amp;item=Movie&amp;item_name=Oblivion&amp;method=post&amp;url=http%3A%2F%2Freviews.com%2Freview%3Fid%3D123&amp;rating_asked=True&amp;rating_required=rating_req&amp;worst=1&amp;best=5&amp;comment_required=comment_opt&amp;format=microdata#response">Microdata</a>)
+{% endblock %}
+
+{% block gm_action_form %}
+	  <input type="hidden" name="gm_action_type" value="review">
+	  <fieldset>
+	  	  <legend>Email</legend>
+	  	  <label>Snippet of text describing the contents of the email
+		  <textarea class="textarea_form" name="description" placeholder="E.g., 'We hope you enjoyed your meal at Joe's Diner. Please rate your experience.'">{{ description }}</textarea></label>
+	  </fieldset>
+
+	  <fieldset>
+	    <legend>Item reviewed (required)</legend>
+	     <select name="item" class="short_input" required>
+	      <option value="FoodEstablishment" {{ rest_selected }}>Restaurant</option>
+	      <option value="Movie" {{ mov_selected }}>Movie</option>
+	      <option value="Product" {{ pr_selected }}>Product</option>
+	    </select> 
+	  <br>
+	  <label>Name of the item being reviewed 
+	  <input class="long_input" type="text" name="item_name" placeholder="E.g., 'Joe's Diner'" value="{{ item_name }}" required></label>
+	  </fieldset> 
+
+	  <fieldset>
+	    <legend>Handler (required)</legend>
+	    <select name="method" class="short_input">
+	      <option value="get" {{ get_selected }}>HTTP GET</option>
+	      <option value="post" {{ post_selected }}>HTTP POST</option>
+	    </select>
+	    <br>
+	    <label>Service or Application that may handle the action (URL)
+	    <input class="long_input" type="url" name="url" placeholder="E.g., 'http://reviews.com/review?id=123'" value="{{ url }}" required></label>
+	  </fieldset>       
+
+
+	  <fieldset>
+	    <legend>Rating</legend>
+	    <label for="ask_rating"> Ask for rating</label>
+	    <input class="checkbox" id="ask_rating" type="checkbox" name="rating_asked" value="True" {{ rating_checked }}>
+	    <br>
+	    <br>
+	    <select name="rating_required" class="long_select">
+	      <option value="rating_req" {{ rating_req_selected }}>Required</option>
+	      <option value="rating_opt" {{ rating_opt_selected }}>Optional</option>
+	    </select>
+	    <br>
+	    <label for="worst_select">Worst rating</label>
+	    <select style="position: relative; left: 5px;" id="worst_select" name="worst" class="short_select">
+	      <option value="1">1</option>
+	    </select>
+	    <br>
+	    <label for="best_select">Best rating</label>
+	    <select  style="position: relative; left: 14px;" id="best_select" name="best" class="short_select">
+	      <option value="5" {{ five_selected }}>5</option>
+	      <option value="4" {{ four_selected }}>4</option>
+	      <option value="3" {{ three_selected }}>3</option>
+	      <option value="2" {{ two_selected }}> 2</option>
+	      <option value="1" {{ one_selected }}>1</option>
+	    </select>
+	  </fieldset> 
+
+	  <fieldset>
+	    <legend>Comment</legend>
+	    <label for="ask_comment"> Ask for comment</label>
+	    <input class="checkbox" id="ask_comment" type="checkbox" name="comment_asked" value="True" {{ comment_checked }}>
+	    <br>
+	    <br>
+	    <select name="comment_required" class="long_select">
+	      <option value="comment_req" {{ comment_req_selected }}>Required</option>
+	      <option value="comment_opt" {{ comment_opt_selected }}>Optional</option>
+	    </select>
+	  </fieldset>
+
+	  <label><input type="radio" name="format" value="jsonld" {{ json_checked }}> JSON-LD</label>
+	  <label><input type="radio" name="format" value="microdata" {{ microdata_checked }}> Microdata</label>
+	  <br>
+	  <br>
+    
+
+	  {{ form.submit() }}
+
+{% endblock %}

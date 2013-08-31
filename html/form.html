@@ -1,0 +1,14 @@
+{%- macro textarea(placeholder, class='textarea_form', name='description') -%}
+    <textarea class="{{ class }}" name="{{ name }}" placeholder = "{{ placeholder }}">{{caller()}}</textarea>
+{%- endmacro %}
+
+{%- macro input(name, placeholder, class='long_input', type='text', req="") -%}
+    <input class="{{ class }}" type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}" {{ req }} value="{{ caller () }}">
+{%- endmacro %}
+
+{%- macro submit() -%}
+    <input class="button" type="submit" value="Submit">
+{%- endmacro %}
+
+
+

@@ -1,0 +1,57 @@
+{% extends "google/gm_template.html" %}
+{% import 'form.html' as form %}
+{% block title %}GMail One-Click Action{% endblock %}
+
+{% block doc_ref %}
+https://developers.google.com/gmail/schemas/reference/one-click-action
+{% endblock %}
+
+{% block examples %}
+<u>Ex1</u>: confirm expense report&nbsp;(
+<a href="/gm_actions?gm_action_type=one_click&amp;action=confirm&amp;method=get&amp;name=Approve+Expense&amp;url=https%3A%2F%2Fmyexpenses.com%2Fapprove%3FexpenseId%3Dabc123&amp;description=Approval+request+for+John%27s+%2410.13+expense+for+office+supplies&amp;format=jsonld#response"> JSON-LD</a>,&nbsp;
+<a href="/gm_actions?gm_action_type=one_click&amp;action=confirm&amp;method=get&amp;name=Approve+Expense&amp;url=https%3A%2F%2Fmyexpenses.com%2Fapprove%3FexpenseId%3Dabc123&amp;description=Approval+request+for+John%27s+%2410.13+expense+for+office+supplies&amp;format=microdata#response">Microdata</a>)<br>
+<u>Ex2</u>: save special offer&nbsp;(
+<a href="/gm_actions?gm_action_type=one_click&amp;action=save&amp;method=get&amp;name=Save+Offer&amp;url=https%3A%2F%2Foffers-everywhere.com%2Fsave%3FofferId%3Dxyz789&amp;description=%245+meal+at+Joe%27s+Diner&amp;format=jsonld#response"> JSON-LD</a>,&nbsp;
+<a href="/gm_actions?gm_action_type=one_click&amp;action=save&amp;method=get&amp;name=Save+Offer&amp;url=https%3A%2F%2Foffers-everywhere.com%2Fsave%3FofferId%3Dxyz789&amp;description=%245+meal+at+Joe%27s+Diner&amp;format=microdata#response">Microdata</a>
+)
+{% endblock %}
+
+{% block gm_action_form %}
+    <input type="hidden" name="gm_action_type" value="one_click">
+    <select name="action" class="long_select">
+      <option value="confirm" {{ confirm_selected }}>Confirm Action</option>
+      <option value="save" {{ save_selected }}>Save Action</option>
+    </select>
+    <br>
+    <select name="method" class="long_select">
+      <option value="get" {{ get_selected }}>HTTP GET</option>
+      <option value="post" {{ post_selected }}>HTTP POST</option>
+    </select>
+    <br>
+    <label>Name shown to the user
+    <input class="long_input" type="text" name="name" placeholder="E.g., 'Approve Expense'" value="{{ name }}"></label>
+    <br>
+    <label>Service or Application that may handle the action (URL)
+    <input class="long_input" type="url" name="url" placeholder="E.g., 'https://myexpenses.com/approve?expenseId=abc123'" value="{{ url }}"></label>
+    <br>
+    <label>Snippet of text describing the contents of the email
+    <textarea class="textarea_form" name="description" placeholder="E.g., 'Approval request for John's $10.13 expense for office supplies.'">{{ description }}</textarea></label>
+    <br>
+    <label for="req_check"> Requires confirmation</label>
+    <input class="checkbox" id="req_check" type="checkbox" name="confirmation" value="True" {{req_checked }}>
+    <br>
+    <br>
+    <label><input type="radio" name="format" value="jsonld" {{ json_checked }}> JSON-LD</label>
+    <label><input type="radio" name="format" value="microdata" {{ microdata_checked }}> Microdata</label>
+    <br>
+    <br>
+    {{ form.submit() }}
+{% endblock %}
+
+
+
+
+
+
+
+

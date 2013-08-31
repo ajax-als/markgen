@@ -1,0 +1,43 @@
+{% extends "google/gm_template.html" %}
+{% import 'form.html' as form %}
+
+{% block title %}
+GMail Go-To Action
+{% endblock %}
+
+{% block doc_ref %}
+https://developers.google.com/gmail/schemas/reference/go-to-action
+{% endblock %}
+
+{% block examples %}
+<u>Ex</u>: watch online movie&nbsp;(
+<a href="/gm_actions?gm_action_type=go_to&amp;description=Watch+the+%27Avengers%27+movie+online.&amp;url=https%3A%2F%2Fwatch-movies.com%2Fwatch%3FmovieId%3Dabc123&amp;name=&amp;format=jsonld#response"> JSON-LD</a>,&nbsp;
+<a href="/gm_actions?gm_action_type=go_to&amp;description=Watch+the+%27Avengers%27+movie+online.&amp;url=https%3A%2F%2Fwatch-movies.com%2Fwatch%3FmovieId%3Dabc123&amp;name=&amp;format=microdata#response">Microdata</a>)
+{% endblock %}
+
+{% block gm_action_form %}
+    <input type="hidden" name="gm_action_type" value="go_to">
+    <label>Snippet of text describing the contents of the email
+    <textarea class="textarea_form" name="description" placeholder="E.g., 'Watch the 'Avengers' movie online.'">{{ description }}</textarea></label>
+    <br>
+    <label>URL to navigate to when user executes the action (required)
+    <input class="long_input" type="url" name="url" placeholder="E.g., 'https://watch-movies.com/watch?movieId=abc123'" value="{{ url }}" required></label>
+    <br>
+    <label>Name shown to the user
+    <input class="long_input" type="text" name="name" placeholder="E.g., 'View'" value="{{ name }}"></label>
+    <br>
+    <label><input type="radio" name="format" value="jsonld" {{ json_checked }}> JSON-LD</label>
+    <label><input type="radio" name="format" value="microdata" {{ microdata_checked }}> Microdata</label>
+    <br>
+    <br>
+    {{ form.submit() }}
+{% endblock %}
+
+
+
+
+
+
+
+
+

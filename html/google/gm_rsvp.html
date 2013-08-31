@@ -1,0 +1,67 @@
+{% extends "google/gm_template.html" %}
+{% import 'form.html' as form %}
+{% block title %}GMail RSVP Action{% endblock %}
+
+{% block doc_ref %}
+https://developers.google.com/gmail/schemas/reference/rsvp-action
+{% endblock %}
+
+{% block examples %}
+<u>Ex</u>: Taco Night at Google&nbsp;(
+<a href="/gm_actions?gm_action_type=rsvp&amp;start_date=2015-04-18T15%3A30%3A00Z&amp;end_date=2015-04-18T16%3A30%3A00Z&amp;event_name=Taco+Night&amp;location_name=Google&amp;street_address=24+Willie+Mays+Plaza&amp;address_locality=San+Francisco&amp;address_region=CA&amp;postal_code=94107&amp;address_country=USA&amp;yes_url=http%3A%2F%2Fmysite.com%2Frsvp%3FeventId%3D123%26value%3Dyes&amp;no_url=http%3A%2F%2Fmysite.com%2Frsvp%3FeventId%3D123%26value%3Dno&amp;maybe_url=http%3A%2F%2Fmysite.com%2Frsvp%3FeventId%3D123%26value%3Dmaybe&amp;format=jsonld#response"> JSON-LD</a>,&nbsp;
+<a href="/gm_actions?gm_action_type=rsvp&amp;start_date=2015-04-18T15%3A30%3A00Z&amp;end_date=2015-04-18T16%3A30%3A00Z&amp;event_name=Taco+Night&amp;location_name=Google&amp;street_address=24+Willie+Mays+Plaza&amp;address_locality=San+Francisco&amp;address_region=CA&amp;postal_code=94107&amp;address_country=USA&amp;yes_url=http%3A%2F%2Fmysite.com%2Frsvp%3FeventId%3D123%26value%3Dyes&amp;no_url=http%3A%2F%2Fmysite.com%2Frsvp%3FeventId%3D123%26value%3Dno&amp;maybe_url=http%3A%2F%2Fmysite.com%2Frsvp%3FeventId%3D123%26value%3Dmaybe&amp;format=microdata#response">Microdata</a>)
+{% endblock %}
+
+{% block gm_action_form %}
+    <input type="hidden" name="gm_action_type" value="rsvp">
+    <fieldset>
+        <legend>Event properties</legend>
+        <label for="sdate">Start date/time (ISO 8601, required)</label>
+        <br>
+        <input id="sdate" class="short_input" type="text" name="start_date" placeholder="E.g., 2015-04-18T15:30:00Z" value="{{ start_date }}" required>
+        <br>
+        <label for="edate">End date/time (ISO 8601)</label>
+        <br>
+        <input id="edate" class="short_input" type="text" name="end_date" placeholder="E.g., 2015-04-18T16:30:00Z" value="{{ end_date }}">
+        <br>
+        <label>Event name (required)
+        <input class="long_input" type="text" name="event_name" placeholder="E.g., 'Taco Night'." value="{{ event_name }}" required></label>
+    </fieldset>
+
+    <fieldset>
+    <legend>Location properties</legend>
+    <label>Location name
+    <input class="long_input" type="text" name="location_name" placeholder="E.g., 'Google'" value = "{{location_name }}"></label>
+    <label>The street address
+    <input class="long_input" type="text" name="street_address" placeholder="E.g., '1600 Amphitheatre Pkwy'" value = "{{street_address }}"></label>
+    <label>The locality 
+    <input class="long_input" type="text" name="address_locality" placeholder="E.g., 'Mountain View'" value = "{{address_locality }}"></label>
+    <label>The region
+    <input class="long_input" type="text" name="address_region" placeholder="E.g., 'CA'" value = "{{address_region }}"></label>
+    <label>The postal code
+    <input class="long_input" type="text" name="postal_code" placeholder="E.g., '94043'" value = "{{ postal_code }}"></label>
+    <label>The country (text or alpha-2 country code in ISO 3166-1)
+    <input class="long_input" type="text" name="address_country" placeholder="E.g., 'USA'" value = "{{address_country }}"></label>
+    </fieldset>
+
+    <fieldset>
+    <legend>Attendance Response (at least one required)</legend>
+    <label>URL for 'Yes' response
+    <input class="long_input" type="url" name="yes_url" placeholder="E.g., 'http://mysite.com/rsvp?eventId=123&amp;value=yes'" value="{{ yes_url }}" ></label>
+    <label>URL for 'No' response
+    <input class="long_input" type="url" name="no_url" placeholder="E.g., 'http://mysite.com/rsvp?eventId=123&amp;value=no'" value="{{ no_url }}"></label>
+    <label>URL for 'Maybe' response
+    <input class="long_input" type="url" name="maybe_url" placeholder="E.g., 'http://mysite.com/rsvp?eventId=123&amp;value=maybe'" value="{{ maybe_url }}"></label>
+    </fieldset>
+    
+    <label><input type="radio" name="format" value="jsonld" {{ json_checked }}> JSON-LD</label>
+    <label><input type="radio" name="format" value="microdata" {{ microdata_checked }}> Microdata</label>
+    <br>
+    <br>
+    {{ form.submit() }}
+{% endblock %}
+
+
+
+
+    

@@ -1,0 +1,20 @@
+{% extends "base_template.html" %}
+
+{% block select_form %}
+ <!--google select -->
+    <form action="/gm_actions" method="get">
+      <select name="gm_action_type" class="short_select">
+        <option value="one_click" {{ oneclick_selected }}>One-Click Action</option>
+        <option value="rsvp" {{ rsvp_selected }}>Rsvp Action</option>
+        <option value="review" {{ review_selected }}>Review Action</option>
+        <option value="go_to" {{goto_selected}}>Go-To Action</option>
+      </select>
+      <input type="submit" value="Select" class="button_menu">
+    </form>
+{% endblock %}
+
+{% block action_form %} 
+  <form action="/gm_actions#response" method="get" class="main_form">
+  	{% block gm_action_form %} {% endblock %}
+  </form>
+{% endblock %}

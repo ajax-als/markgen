@@ -1,0 +1,145 @@
+.main_form {
+  border: 2px solid #d0d2d5;
+  background: linear-gradient(top, #fff, #f8f8f8);
+  border-bottom: 2px solid #bebfc2;
+  border-radius: 4px;
+  margin: 0 0 20px 0;
+  padding: 20px;
+  width: 500px;
+}
+
+.textarea_response {
+  background: #fff;
+  border: 1px solid #c6c9cc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 #fff;
+  color: #555;
+  font: 15px/20px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  margin: 0 0 20px 0;
+  padding: 5px;
+  height: 500px;
+  width: 490px;
+}
+
+.textarea_form {
+  background: #fff;
+  border: 1px solid #c6c9cc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 #fff;
+  color: #555;
+  font: 15px/20px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  margin: 0 0 20px 0;
+  padding: 5px;
+  height: 100px;
+  width: 470px;
+}
+
+.long_input{
+  background: #fff;
+  border: 1px solid #c6c9cc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 #fff;
+  color: #555;
+  font: 15px/20px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  margin: 0 0 20px 0;
+  padding: 5px;
+  width: 470px;
+}
+
+.long_select {
+  background: #fff;
+  border: 1px solid #c6c9cc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 #fff;
+  color: #555;
+  font: 15px/20px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  margin: 0 0 20px 0;
+  padding: 5px;
+  width: 250px;  
+}
+
+.short_input {
+  background: #fff;
+  border: 1px solid #c6c9cc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 #fff;
+  color: #555;
+  font: 15px/20px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  margin: 0 0 20px 0;
+  padding: 5px;
+  width: 250px;
+}
+
+.short_select {
+  
+  border: 1px solid #c6c9cc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  
+  color: #555;
+  font: 15px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  
+  padding: 5px;
+  width: 150px;  
+}
+
+.button {
+  background: #fff;
+  border: 1px solid #c6c9cc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 #fff;
+  color: #555;
+  font: 15px/20px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  margin: 0 0 20px 0;
+  padding: 5px;
+  width: 100px;   
+  
+}
+
+.button_menu {
+  background: #fff;
+  border: 1px solid #c6c9cc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 #fff;
+  color: #555;
+  font: 15px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  width: 70px;   
+}
+
+.side_menu {
+  background: #fff;
+  border: 1px solid #c6c9cc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 #fff;
+  color: #555;
+  font: 15px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  width: 150px;
+  position: absolute;
+  left: 380px;
+
+  padding: 10px;
+}
+
+label {
+  color: #555;
+  font: 15px/20px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  margin: 0 0 20px 0;
+  
+}
+
+fieldset {
+  background: #fff;
+  border: 1px solid #c6c9cc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 #fff;
+  color: #555;
+  font: 15px/20px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  margin: 0 0 20px 0;
+  padding: 5px;
+}
+
+legend{
+  color: #555;
+  font: 15px/20px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+}
+

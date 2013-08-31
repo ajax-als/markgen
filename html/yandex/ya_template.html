@@ -1,0 +1,18 @@
+{% extends "base_template.html" %}
+
+{% block select_form %}
+ <!--google select -->
+    <form action="/ya_actions" method="get">
+      <select name="ya_action_type" class="short_select">
+        <option value="xml_form" {{ xml_selected }}>XML Form</option>
+        <option value="button" {{ button_selected }}>Button</option>
+      </select>
+      <input type="submit" value="Select" class="button_menu">
+    </form>
+{% endblock %}
+
+{% block action_form %} 
+  <form action="/ya_actions#response" method="get" class="main_form">
+  	{% block ya_action_form %} {% endblock %}
+  </form>
+{% endblock %}

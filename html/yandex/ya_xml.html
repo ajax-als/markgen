@@ -1,0 +1,79 @@
+{% extends "yandex/ya_template.html" %}
+{% import 'form.html' as form %}
+
+{% block title %}Ya.Islands XML Form {% endblock %}
+
+{% block doc_ref %}
+http://help.yandex.com/webmaster/?id=1127882
+{% endblock %}
+
+{% block examples %}
+<u>Ex</u>: XML form with two default params&nbsp;(
+<a href="/ya_actions?ya_action_type=xml_form&amp;url=http%3A%2F%2Fexample.com%2Fmy_xml_url.xml&amp;def0_name=property_name&amp;def0_value=property_default_value&amp;def1_name=property_2_name&amp;def1_value=property_2_default_value&amp;def2_name=&amp;def2_value=&amp;def3_name=&amp;def3_value=&amp;def4_name=&amp;def4_value=&amp;format=ogp#response"> OGP</a>,&nbsp;
+<a href="/ya_actions?ya_action_type=xml_form&amp;url=http%3A%2F%2Fexample.com%2Fmy_xml_url_1.xml&amp;def0_name=property_name&amp;def0_value=property_def_value&amp;def1_name=property_2_name&amp;def1_value=property_2_def_value&amp;def2_name=&amp;def2_value=&amp;def3_name=&amp;def3_value=&amp;def4_name=&amp;def4_value=&amp;format=schema#response">Schema.org</a>)
+{% endblock %}
+
+{% block ya_action_form %}
+    <input type="hidden" name="ya_action_type" value="xml_form">
+    <fieldset>
+        <legend>Link to form</legend>
+        <input class="long_input" type="url" name="url" placeholder="Link to XML form description (required)." value="{{ url }}" required>
+    </fieldset>
+
+    <fieldset>
+    <legend>Default properties</legend>
+    <br>
+    Default property (Def0)
+    <br>
+    <label>Def0: name
+    <input class="long_input" type="text" name="def0_name" placeholder="Property name" value = "{{def0_name }}"></label>
+    
+    <label>Def0: value
+    <input class="long_input" type="text" name="def0_value" placeholder="Property value" value = "{{def0_value }}"></label>
+    <br>
+    <br>
+    Default property (Def1)
+    <br>
+    <label>Def1: name
+    <input class="long_input" type="text" name="def1_name" placeholder="Property name" value = "{{def1_name }}"></label>
+    <label>Def1: value
+    <input class="long_input" type="text" name="def1_value" placeholder="Property value" value = "{{def1_value }}"></label>
+    <br>
+    <br>
+    Default property (Def2)
+    <br>
+    <label>Def2: name
+    <input class="long_input" type="text" name="def2_name" placeholder="Property name" value = "{{def2_name }}"></label>
+    <label>Def2: value
+    <input class="long_input" type="text" name="def2_value" placeholder="Property value" value = "{{def2_value }}"></label>
+    <br><br>
+    Default property (Def3)
+    <br>
+    <label>Def3: name
+    <input class="long_input" type="text" name="def3_name" placeholder="Property name" value = "{{def3_name }}"></label>
+    <label>Def3: value
+    <input class="long_input" type="text" name="def3_value" placeholder="Property value" value = "{{def3_value }}"></label>
+    <br><br>
+    Default property (4)
+    <br>
+    <label>Def4: name
+    <input class="long_input" type="text" name="def4_name" placeholder="Property name" value = "{{def4_name }}"></label>
+    <label>Def4: value
+    <input class="long_input" type="text" name="def4_value" placeholder="Property value" value = "{{def4_value }}"></label>
+    </fieldset>  
+    <br>
+    <label><input type="radio" name="format" value="ogp" {{ ogp_checked }}> OGP (extension)</label>
+    <label><input type="radio" name="format" value="schema" {{ schema_checked }}> Schema.org (JSON-LD)</label>
+    <br>
+    <br>
+    {{ form.submit() }}  
+{% endblock %}
+
+
+
+
+
+
+
+
+

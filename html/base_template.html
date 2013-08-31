@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/form.css" />
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+
+  <body>
+    <div id="up" class="side_menu">
+      <a href="/ya_actions">Ya.Islands Actions</a>
+      <br>
+      <a href="/gm_actions">Gmail Actions</a>
+    </div>
+
+    {% block select_form %}{%endblock %}
+
+    <h2> {{ self.title() }} <sup><a href="{% block doc_ref %}{% endblock %}">(doc)</a></sup> </h2>
+
+    <!--block with examples-->
+    {% block examples %} {% endblock %}
+    <br><br>
+
+    <!-- action form -->
+    {% block action_form %} {% endblock %}
+
+    <!-- response form -->
+    <h3><a id="response">Generated response</a></h3>
+    <a href="#up">Up to form</a>
+    <form class="main_form">
+      <textarea class="textarea_response" name="response" placeholder="Generated result is shown here.">{{response}}</textarea>
+    </form>
+
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter22195324 = new Ya.Metrika({id:22195324, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true, trackHash:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/22195324" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+    <!--Google Analytics counter--><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-43664436-1', 'markupgen.appspot.com');ga('send', 'pageview');</script><!--/Google Analytics counter-->
+  </body>  
+</html>
+
