@@ -13,8 +13,8 @@ class YaAction(object):
     self._format = ""
 
   def handler(self, jinja_env=None, request=None):
-    self._format = request.get("format", self.OGP)
-    if self._format == self.OGP:
+    self._format = request.get("format", YaAction.OGP)
+    if self._format == YaAction.OGP:
       self._help_params["ogp_checked"] = "checked"
       self._help_params["schema_checked"] = ""    
     else:
