@@ -4,7 +4,7 @@ Markgen
 Markgen is a simple [web app](http://markupgen.appspot.com) that (at the moment) generates "actions" markup for [GMail Actions](https://developers.google.com/gmail/schemas/overview) (schema.org in microdata and JSON-LD syntax) and  for [Yandex Islands](http://beta.yandex.com) (OGP, schema.org in JSON-LD syntax). Produced markup can be easily embedded to web page, email, etc. without any additional processing.
 
 ##Markup details
-While it is always an issue to use third-party generated code in own visible part of html, one can easily integrate any markup in invisible parts (e.g., in <head> area). The tool aims for such kind of data - just copy-paste result to the place you need. This is achieved by using <script> tag (for JSON-LD syntax) and <meta> tag (for OGP and microdata syntax). 
+While it is always an issue to use third-party generated code in own visible part of html, one can easily integrate any markup in invisible parts (e.g., in 'head' area). The tool aims for such kind of data - just copy-paste result to the place you need. This is achieved by using 'script' tag (for JSON-LD syntax) and 'meta' tag (for OGP and microdata syntax). 
 
 At the moment following types of markup are supported:
 	- [Google GMail Actions](https://developers.google.com/gmail/schemas/overview) - schema.org in JSON-LD and microdata syntax
